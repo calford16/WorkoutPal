@@ -22,7 +22,11 @@
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
-        android:textSize="@dimen/abc_text_size_display_1_material" />
+        android:textSize="@dimen/abc_text_size_display_1_material"
+        android:shadowColor="@color/colorAccentTransparent"
+        android:shadowDx="-2"
+        android:shadowDy="2"
+        android:shadowRadius="0.01"/>
 
     <ScrollView
         android:layout_width="fill_parent"
@@ -48,35 +52,36 @@
             android:layout_height="60dp"
             android:layout_margin="10dp"
             android:id="@+id/imageButton"
-            android:src="@drawable/armColored"
+            android:src="@drawable/arm"
             android:scaleType="fitCenter"
             android:padding="5dp"
-            android:background="@drawable/round_corner"
+            android:background="@drawable/button_selector"
             android:layout_weight="1"
-            />
+            android:contentDescription="@string/arm_button_description" />
 
         <ImageButton
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="10dp"
             android:id="@+id/imageButton2"
-            android:src="@drawable/graphColored"
+            android:src="@drawable/graph"
             android:scaleType="fitCenter"
             android:padding="10dp"
-            android:background="@drawable/round_corner"
+            android:background="@drawable/button_selector"
             android:layout_weight="1"
-             />
+            android:contentDescription="@string/graph_button_description" />
 
         <ImageButton
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="10dp"
             android:id="@+id/imageButton3"
-            android:src="@drawable/checklistColored"
+            android:src="@drawable/checklist"
             android:scaleType="fitCenter"
             android:padding="5dp"
-            android:background="@drawable/round_corner"
-            android:layout_weight="1" />
+            android:background="@drawable/button_selector"
+            android:layout_weight="1"
+            android:contentDescription="@string/checklist_button_description" />
     </LinearLayout>
 
 </RelativeLayout>
