@@ -6,31 +6,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import edu.westga.workoutpal.Model.WorkoutItem;
 import edu.westga.workoutpal.R;
-import edu.westga.workoutpal.View.ItemFragment.OnListFragmentInteractionListener;
-import edu.westga.workoutpal.View.dummy.DummyContent.DummyItem;
+import edu.westga.workoutpal.View.WorkoutFragmentList.OnListFragmentInteractionListener;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
+ * {@link RecyclerView.Adapter} that can display a {@link edu.westga.workoutpal.Model.WorkoutItem} and makes a call to the
+ * specified {@link WorkoutFragmentList.OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MyWorkoutRecyclerViewAdapter extends RecyclerView.Adapter<MyWorkoutRecyclerViewAdapter.ViewHolder> {
+public class WorkoutRecyclerViewAdapter extends RecyclerView.Adapter<WorkoutRecyclerViewAdapter.ViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final List<WorkoutItem> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyWorkoutRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
+    public WorkoutRecyclerViewAdapter(List<WorkoutItem> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_workout_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -38,7 +37,7 @@ public class MyWorkoutRecyclerViewAdapter extends RecyclerView.Adapter<MyWorkout
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
         holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mMuscleGroupView.setText(mValues.get(position).muscle_group);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,19 +59,19 @@ public class MyWorkoutRecyclerViewAdapter extends RecyclerView.Adapter<MyWorkout
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
         public final TextView mIdView;
-        public final TextView mContentView;
-        public DummyItem mItem;
+        public final TextView mMuscleGroupView;
+        public WorkoutItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
             mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mMuscleGroupView = (TextView) view.findViewById(R.id.muscle_group);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + mMuscleGroupView.getText() + "'";
         }
     }
 }

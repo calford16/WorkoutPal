@@ -26,7 +26,7 @@
         android:shadowColor="@color/colorAccentTransparent"
         android:shadowDx="-2"
         android:shadowDy="2"
-        android:shadowRadius="0.01"/>
+        android:shadowRadius="0.01" />
 
     <ScrollView
         android:layout_width="fill_parent"

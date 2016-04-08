@@ -9,5 +9,5 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context="edu.westga.workoutpal.View.WorkoutFragment"
-    tools:listitem="@layout/fragment_workout" />
+    tools:context=".View.WorkoutFragmentList"
+    tools:listitem="@layout/fragment_workout_item" />

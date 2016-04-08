@@ -10,11 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import edu.westga.workoutpal.Model.WorkoutItem;
 import edu.westga.workoutpal.R;
-import edu.westga.workoutpal.View.dummy.DummyContent;
-import edu.westga.workoutpal.View.dummy.DummyContent.DummyItem;
-
-import java.util.List;
+import edu.westga.workoutpal.Model.WorkoutContent;
 
 /**
  * A fragment representing a list of Items.
@@ -22,7 +20,7 @@ import java.util.List;
  * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
  * interface.
  */
-public class WorkoutFragment extends Fragment {
+public class WorkoutFragmentList extends Fragment {
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -34,13 +32,13 @@ public class WorkoutFragment extends Fragment {
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public WorkoutFragment() {
+    public WorkoutFragmentList() {
     }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
-    public static WorkoutFragment newInstance(int columnCount) {
-        WorkoutFragment fragment = new WorkoutFragment();
+    public static WorkoutFragmentList newInstance(int columnCount) {
+        WorkoutFragmentList fragment = new WorkoutFragmentList();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -70,7 +68,7 @@ public class WorkoutFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-           // recyclerView.setAdapter(new MyWorkoutRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new WorkoutRecyclerViewAdapter(WorkoutContent.ITEMS, mListener));
         }
         return view;
     }
@@ -82,8 +80,7 @@ public class WorkoutFragment extends Fragment {
         if (context instanceof OnListFragmentInteractionListener) {
             mListener = (OnListFragmentInteractionListener) context;
         } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnListFragmentInteractionListener");
+            throw new RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener");
         }
     }
 
@@ -104,7 +101,6 @@ public class WorkoutFragment extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnListFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(WorkoutItem item);
     }
 }
