@@ -18,19 +18,19 @@ public class WorkoutController {
 
     }
 
-    public WorkoutContent generateWorkoutList(String fileName, Context c) {
+    public void generateWorkoutList(String fileName, Context c) {
         WorkoutContent workContent = new WorkoutContent();
         FileReader reader = new FileReader();
         ArrayList<List<String>> listInfo = new ArrayList<List<String>>();
 
         listInfo = reader.ReadFromFile(fileName, c);
 
-        return workContent;
+        //TODO: Populate workout content
+
     }
 
     public boolean closeMatch (int color1, int color2, int tolerance) {
         ColorTool ct = new ColorTool();
         return ct.closeMatch(color1, color2, tolerance);
     }
-
 }

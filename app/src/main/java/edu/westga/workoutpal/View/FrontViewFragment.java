@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import edu.westga.workoutpal.Controller.WorkoutController;
 import edu.westga.workoutpal.Model.ColorTool;
@@ -21,6 +22,10 @@ import edu.westga.workoutpal.R;
  */
 public class FrontViewFragment extends Fragment implements View.OnTouchListener {
 
+    public static final String ARMS = "arms.txt";
+    public static final String CHEST = "chest.txt";
+    public static final String ABS = "abs.txt";
+    public static final String LEGS = "legs.txt";
     public WorkoutController controller;
 
     public FrontViewFragment() {
@@ -30,7 +35,10 @@ public class FrontViewFragment extends Fragment implements View.OnTouchListener 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_front_view, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_front_view, container, false);
+        view.setOnTouchListener(this);
+        return view;
     }
 
     @Override
@@ -47,8 +55,8 @@ public class FrontViewFragment extends Fragment implements View.OnTouchListener 
                 int tolerance = 25;
 
                 if (controller.closeMatch (Color.RED, touchColor, tolerance)) {
-                    // Do the action associated with the RED region
-
+                    controller.generateWorkoutList(FrontViewFragment.ARMS, getContext());
+                    //getView().findViewById(R.id.listButton).performClick();
                 } else if (controller.closeMatch(Color.BLUE, touchColor, tolerance)){
 
                 } else if (controller.closeMatch(Color.GREEN, touchColor, tolerance)) {

@@ -31,19 +31,37 @@
     <ScrollView
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
         android:layout_below="@+id/header"
-        android:layout_above="@+id/menuBar">
+        android:id="@+id/frag_content"
+        android:layout_above="@+id/frag_description">
 
         <!-- some scrolling content -->
     </ScrollView>
 
+    <TextView
+        android:id="@+id/frag_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/body_frag_string"
+        android:textColor="@color/colorAccent"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:layout_above="@+id/menuBar"
+        />
+
     <LinearLayout
-        android:id="@+id/menuBar"
+        android:id="@id/menuBar"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
+        android:layout_centerHorizontal="true"
+        >
 
         <!-- Some Buttons -->
 
@@ -51,37 +69,40 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="10dp"
-            android:id="@+id/imageButton"
+            android:id="@+id/bodyButton"
             android:src="@drawable/arm"
             android:scaleType="fitCenter"
             android:padding="5dp"
             android:background="@drawable/button_selector"
             android:layout_weight="1"
-            android:contentDescription="@string/arm_button_description" />
+            android:contentDescription="@string/arm_button_description"
+            android:onClick="onBodyButtonPress" />
 
         <ImageButton
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="10dp"
-            android:id="@+id/imageButton2"
+            android:id="@+id/statButton"
             android:src="@drawable/graph"
             android:scaleType="fitCenter"
             android:padding="10dp"
             android:background="@drawable/button_selector"
             android:layout_weight="1"
-            android:contentDescription="@string/graph_button_description" />
+            android:contentDescription="@string/graph_button_description"
+            android:onClick="onStatButtonPress" />
 
         <ImageButton
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="10dp"
-            android:id="@+id/imageButton3"
+            android:id="@+id/listButton"
             android:src="@drawable/checklist"
             android:scaleType="fitCenter"
             android:padding="5dp"
             android:background="@drawable/button_selector"
             android:layout_weight="1"
-            android:contentDescription="@string/checklist_button_description" />
+            android:contentDescription="@string/checklist_button_description"
+            android:onClick="onListButtonPress" />
     </LinearLayout>
 
 </RelativeLayout>
