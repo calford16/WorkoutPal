@@ -9,9 +9,9 @@ public class WorkoutItem {
     public final String muscle_group;
     public final String details;
 
-    public WorkoutItem(String id, String content, String details) {
+    public WorkoutItem(String id, String muscle_group, String details) {
         this.id = id;
-        this.muscle_group = content;
+        this.muscle_group = muscle_group;
         this.details = details;
     }
 

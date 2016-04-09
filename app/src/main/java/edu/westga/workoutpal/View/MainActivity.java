@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import edu.westga.workoutpal.Controller.WorkoutController;
@@ -44,7 +45,8 @@ public class MainActivity extends AppCompatActivity implements WorkoutFragmentLi
         fragmentTransaction.replace(R.id.frag_content, fragment);
         fragmentTransaction.commit();
 
-        //TODO change textview
+        TextView textView = (TextView) findViewById(R.id.frag_description);
+        textView.setText(R.string.body_frag_string);
     }
 
     public void onStatButtonPress(View v) {
@@ -59,6 +61,12 @@ public class MainActivity extends AppCompatActivity implements WorkoutFragmentLi
         fragmentTransaction.replace(R.id.frag_content, fragment);
         fragmentTransaction.commit();
 
-        //TODO change textview
+        if (controller.getWorkoutContentSize() <= 0) {
+            TextView textView = (TextView) findViewById(R.id.frag_description);
+            textView.setText("Select a body part to see workouts!");
+        } else {
+            TextView textView = (TextView) findViewById(R.id.frag_description);
+            textView.setText("");
+        }
     }
 }

@@ -26,7 +26,7 @@ public class FileReader {
 
             String mLine;
             while ((mLine = reader.readLine()) != null) {
-                List<String> entry = Arrays.asList(mLine.split(","));
+                List<String> entry = Arrays.asList(mLine.split("\\^"));
                 stringList.add(entry);
             }
             return stringList;

@@ -8,6 +8,7 @@ import java.util.List;
 import edu.westga.workoutpal.Model.ColorTool;
 import edu.westga.workoutpal.Model.FileReader;
 import edu.westga.workoutpal.Model.WorkoutContent;
+import edu.westga.workoutpal.Model.WorkoutItem;
 
 /**
  * Created by Cory on 4/7/2016.
@@ -18,19 +19,36 @@ public class WorkoutController {
 
     }
 
-    public void generateWorkoutList(String fileName, Context c) {
-        WorkoutContent workContent = new WorkoutContent();
+    public void generateWorkoutContent(String fileName, Context c) {
+        WorkoutContent.clearItems();
         FileReader reader = new FileReader();
         ArrayList<List<String>> listInfo = new ArrayList<List<String>>();
+        WorkoutItem item;
 
-        listInfo = reader.ReadFromFile(fileName, c);
+        try {
+            listInfo = reader.ReadFromFile(fileName, c);
+            int id = 1;
+            String muscle_group = "";
+            String details = "";
 
-        //TODO: Populate workout content
-
+            for (List<String> ls : listInfo) {
+                muscle_group = ls.get(0);
+                details = ls.get(1);
+                item = new WorkoutItem(Integer.toString(id), muscle_group, details);
+                WorkoutContent.addItem(item);
+                id++;
+            }
+        } catch (Exception e) {
+            // log exception
+        }
     }
 
     public boolean closeMatch (int color1, int color2, int tolerance) {
         ColorTool ct = new ColorTool();
         return ct.closeMatch(color1, color2, tolerance);
+    }
+
+    public int getWorkoutContentSize() {
+        return WorkoutContent.getItemCount();
     }
 }

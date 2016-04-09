@@ -7,6 +7,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -55,8 +56,7 @@ public class WorkoutFragmentList extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_workout_list, container, false);
 
         // Set the adapter
@@ -68,7 +68,11 @@ public class WorkoutFragmentList extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new WorkoutRecyclerViewAdapter(WorkoutContent.ITEMS, mListener));
+            WorkoutRecyclerViewAdapter adapter = new WorkoutRecyclerViewAdapter(WorkoutContent.ITEMS, mListener);
+            recyclerView.setAdapter(adapter);
+
+            //int viewHeight = adapterItemSize * adapter.size();
+            //view.getLayoutParams().height = 100;
         }
         return view;
     }

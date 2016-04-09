@@ -35,4 +35,13 @@ public class WorkoutContent {
         builder.append("\n" + ITEMS.get(position).toString());
         return builder.toString();
     }
+
+    public static void clearItems() {
+        ITEMS.clear();
+        ITEM_MAP.clear();
+    }
+
+    public static int getItemCount() {
+        return ITEMS.size();
+    }
 }

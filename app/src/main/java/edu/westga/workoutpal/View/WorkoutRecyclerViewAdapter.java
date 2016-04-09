@@ -36,8 +36,8 @@ public class WorkoutRecyclerViewAdapter extends RecyclerView.Adapter<WorkoutRecy
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mMuscleGroupView.setText(mValues.get(position).muscle_group);
+        holder.mMuscleGroupView.setText(mValues.get(position).id + ". " + mValues.get(position).muscle_group);
+        holder.mDetailsView.setText(mValues.get(position).details);
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,15 +58,15 @@ public class WorkoutRecyclerViewAdapter extends RecyclerView.Adapter<WorkoutRecy
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
         public final TextView mMuscleGroupView;
+        public final TextView mDetailsView;
         public WorkoutItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
             mMuscleGroupView = (TextView) view.findViewById(R.id.muscle_group);
+            mDetailsView = (TextView)view.findViewById(R.id.details);
         }
 
         @Override

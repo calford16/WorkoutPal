@@ -29,11 +29,13 @@
         android:shadowRadius="0.01" />
 
     <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="400dp"
+        android:layout_height="100dp"
+        android:fillViewport="true"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
         android:layout_below="@+id/header"
         android:id="@+id/frag_content"
         android:layout_above="@+id/frag_description">

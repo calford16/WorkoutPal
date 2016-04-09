@@ -1,6 +1,7 @@
 package edu.westga.workoutpal.View;
 
 
+import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -10,10 +11,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import edu.westga.workoutpal.Controller.WorkoutController;
-import edu.westga.workoutpal.Model.ColorTool;
 
 import edu.westga.workoutpal.R;
 
@@ -46,25 +45,35 @@ public class FrontViewFragment extends Fragment implements View.OnTouchListener 
         final int action = ev.getAction();
         final int evX = (int) ev.getX();
         final int evY = (int) ev.getY();
-        switch (action) {
-            case MotionEvent.ACTION_DOWN :
 
-                break;
-            case MotionEvent.ACTION_UP :
-                int touchColor = getHotspotColor (R.id.image_areas, evX, evY);
-                int tolerance = 25;
+        try {
+            Activity activity = getActivity();
+            MainActivity myActivity = (MainActivity) activity;
 
-                if (controller.closeMatch (Color.RED, touchColor, tolerance)) {
-                    controller.generateWorkoutList(FrontViewFragment.ARMS, getContext());
-                    //getView().findViewById(R.id.listButton).performClick();
-                } else if (controller.closeMatch(Color.BLUE, touchColor, tolerance)){
+            switch (action) {
+                case MotionEvent.ACTION_DOWN:
+                    break;
+                case MotionEvent.ACTION_UP:
+                    int touchColor = getHotspotColor(R.id.image_areas, evX, evY);
+                    int tolerance = 25;
 
-                } else if (controller.closeMatch(Color.GREEN, touchColor, tolerance)) {
-
-                } else if (controller.closeMatch(Color.YELLOW, touchColor, tolerance)) {
-
-                }
-                break;
+                    if (controller.closeMatch(Color.RED, touchColor, tolerance)) {
+                        controller.generateWorkoutContent(FrontViewFragment.ARMS, getContext());
+                        myActivity.onListButtonPress(getView());
+                    } else if (controller.closeMatch(Color.BLUE, touchColor, tolerance)) {
+                        controller.generateWorkoutContent(FrontViewFragment.ABS, getContext());
+                        myActivity.onListButtonPress(getView());
+                    } else if (controller.closeMatch(Color.GREEN, touchColor, tolerance)) {
+                        controller.generateWorkoutContent(FrontViewFragment.CHEST, getContext());
+                        myActivity.onListButtonPress(getView());
+                    } else if (controller.closeMatch(Color.YELLOW, touchColor, tolerance)) {
+                        controller.generateWorkoutContent(FrontViewFragment.LEGS, getContext());
+                        myActivity.onListButtonPress(getView());
+                    }
+                    break;
+            }
+        } catch (NullPointerException npe) {
+            return false;
         }
         return true;
     }
