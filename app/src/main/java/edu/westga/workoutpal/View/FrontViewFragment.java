@@ -12,6 +12,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 import edu.westga.workoutpal.Controller.WorkoutController;
 
 import edu.westga.workoutpal.R;
@@ -58,21 +63,27 @@ public class FrontViewFragment extends Fragment implements View.OnTouchListener 
                     int tolerance = 25;
 
                     if (controller.closeMatch(Color.RED, touchColor, tolerance)) {
-                        controller.generateWorkoutContent(FrontViewFragment.ARMS, getContext());
+                        InputStream input = getContext().getAssets().open(FrontViewFragment.ARMS);
+                        controller.generateWorkoutContent(input);
                         myActivity.onListButtonPress(getView());
                     } else if (controller.closeMatch(Color.BLUE, touchColor, tolerance)) {
-                        controller.generateWorkoutContent(FrontViewFragment.ABS, getContext());
+                        InputStream input = getContext().getAssets().open(FrontViewFragment.ABS);
+                        controller.generateWorkoutContent(input);
                         myActivity.onListButtonPress(getView());
                     } else if (controller.closeMatch(Color.GREEN, touchColor, tolerance)) {
-                        controller.generateWorkoutContent(FrontViewFragment.CHEST, getContext());
+                        InputStream input = getContext().getAssets().open(FrontViewFragment.CHEST);
+                        controller.generateWorkoutContent(input);
                         myActivity.onListButtonPress(getView());
                     } else if (controller.closeMatch(Color.YELLOW, touchColor, tolerance)) {
-                        controller.generateWorkoutContent(FrontViewFragment.LEGS, getContext());
+                        InputStream input = getContext().getAssets().open(FrontViewFragment.LEGS);
+                        controller.generateWorkoutContent(input);
                         myActivity.onListButtonPress(getView());
                     }
                     break;
             }
         } catch (NullPointerException npe) {
+            return false;
+        } catch (IOException ie) {
             return false;
         }
         return true;

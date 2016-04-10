@@ -2,6 +2,7 @@ package edu.westga.workoutpal.Controller;
 
 import android.content.Context;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,14 +20,14 @@ public class WorkoutController {
 
     }
 
-    public void generateWorkoutContent(String fileName, Context c) {
+    public void generateWorkoutContent(InputStream input) {
         this.clearContent();
         FileReader reader = new FileReader();
         ArrayList<List<String>> listInfo = new ArrayList<List<String>>();
         WorkoutItem item;
 
         try {
-            listInfo = reader.ReadFromFile(fileName, c);
+            listInfo = reader.ReadFromFile(input);
             int id = 1;
             String muscle_group = "";
             String details = "";

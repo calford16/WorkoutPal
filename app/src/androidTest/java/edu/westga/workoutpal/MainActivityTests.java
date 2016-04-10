@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import java.io.IOException;
+
 import edu.westga.workoutpal.Controller.WorkoutController;
 import edu.westga.workoutpal.View.FrontViewFragment;
 import edu.westga.workoutpal.View.MainActivity;
@@ -75,8 +77,11 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         WorkoutController controller = new WorkoutController();
 
         getInstrumentation().waitForIdleSync();
-
-        controller.generateWorkoutContent(FrontViewFragment.ARMS, this.getActivity().getBaseContext());
+        try {
+            controller.generateWorkoutContent(this.getActivity().getBaseContext().getAssets().open(FrontViewFragment.ARMS));
+        } catch (IOException ioe) {
+            fail();
+        }
         ImageButton listButton = (ImageButton) activity.findViewById(R.id.listButton);
         TouchUtils.clickView(this, listButton);
 
