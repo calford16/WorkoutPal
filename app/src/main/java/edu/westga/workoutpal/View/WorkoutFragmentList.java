@@ -70,9 +70,6 @@ public class WorkoutFragmentList extends Fragment {
             }
             WorkoutRecyclerViewAdapter adapter = new WorkoutRecyclerViewAdapter(WorkoutContent.ITEMS, mListener);
             recyclerView.setAdapter(adapter);
-
-            //int viewHeight = adapterItemSize * adapter.size();
-            //view.getLayoutParams().height = 100;
         }
         return view;
     }
@@ -106,5 +103,9 @@ public class WorkoutFragmentList extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         void onListFragmentInteraction(WorkoutItem item);
+    }
+
+    public int getItemCount() {
+        return new WorkoutRecyclerViewAdapter(WorkoutContent.ITEMS, mListener).getItemCount();
     }
 }

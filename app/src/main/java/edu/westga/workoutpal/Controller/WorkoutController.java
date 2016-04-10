@@ -20,7 +20,7 @@ public class WorkoutController {
     }
 
     public void generateWorkoutContent(String fileName, Context c) {
-        WorkoutContent.clearItems();
+        this.clearContent();
         FileReader reader = new FileReader();
         ArrayList<List<String>> listInfo = new ArrayList<List<String>>();
         WorkoutItem item;
@@ -50,5 +50,9 @@ public class WorkoutController {
 
     public int getWorkoutContentSize() {
         return WorkoutContent.getItemCount();
+    }
+
+    public void clearContent() {
+        WorkoutContent.clearItems();
     }
 }
