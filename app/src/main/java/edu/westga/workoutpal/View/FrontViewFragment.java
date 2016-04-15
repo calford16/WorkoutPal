@@ -26,10 +26,6 @@ import edu.westga.workoutpal.R;
  */
 public class FrontViewFragment extends Fragment implements View.OnTouchListener {
 
-    public static final String ARMS = "arms.txt";
-    public static final String CHEST = "chest.txt";
-    public static final String ABS = "abs.txt";
-    public static final String LEGS = "legs.txt";
     public WorkoutController controller;
 
     public FrontViewFragment() {
@@ -63,20 +59,16 @@ public class FrontViewFragment extends Fragment implements View.OnTouchListener 
                     int tolerance = 25;
 
                     if (controller.closeMatch(Color.RED, touchColor, tolerance)) {
-                        InputStream input = getContext().getAssets().open(FrontViewFragment.ARMS);
-                        controller.generateWorkoutContent(input);
+                        controller.generateWorkoutContent(getContext().getAssets().open(MainActivity.ARMS + ".txt"), MainActivity.ARMS);
                         myActivity.onListButtonPress(getView());
                     } else if (controller.closeMatch(Color.BLUE, touchColor, tolerance)) {
-                        InputStream input = getContext().getAssets().open(FrontViewFragment.ABS);
-                        controller.generateWorkoutContent(input);
+                        controller.generateWorkoutContent(getContext().getAssets().open(MainActivity.ABS + ".txt"), MainActivity.ABS);
                         myActivity.onListButtonPress(getView());
                     } else if (controller.closeMatch(Color.GREEN, touchColor, tolerance)) {
-                        InputStream input = getContext().getAssets().open(FrontViewFragment.CHEST);
-                        controller.generateWorkoutContent(input);
+                        controller.generateWorkoutContent(getContext().getAssets().open(MainActivity.CHEST + ".txt"), MainActivity.CHEST);
                         myActivity.onListButtonPress(getView());
                     } else if (controller.closeMatch(Color.YELLOW, touchColor, tolerance)) {
-                        InputStream input = getContext().getAssets().open(FrontViewFragment.LEGS);
-                        controller.generateWorkoutContent(input);
+                        controller.generateWorkoutContent(getContext().getAssets().open(MainActivity.LEGS + ".txt"), MainActivity.LEGS);
                         myActivity.onListButtonPress(getView());
                     }
                     break;

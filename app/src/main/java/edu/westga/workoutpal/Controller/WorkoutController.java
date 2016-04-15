@@ -20,7 +20,7 @@ public class WorkoutController {
 
     }
 
-    public void generateWorkoutContent(InputStream input) {
+    public void generateWorkoutContent(InputStream input, String muscle) {
         this.clearContent();
         FileReader reader = new FileReader();
         ArrayList<List<String>> listInfo = new ArrayList<List<String>>();
@@ -35,7 +35,7 @@ public class WorkoutController {
             for (List<String> ls : listInfo) {
                 muscle_group = ls.get(0);
                 details = ls.get(1);
-                item = new WorkoutItem(Integer.toString(id), muscle_group, details);
+                item = new WorkoutItem(Integer.toString(id),muscle, muscle_group, details);
                 WorkoutContent.addItem(item);
                 id++;
             }
@@ -55,5 +55,9 @@ public class WorkoutController {
 
     public void clearContent() {
         WorkoutContent.clearItems();
+    }
+
+    public String getCurrentMuscle() {
+        return WorkoutContent.getCurrentMuscle();
     }
 }

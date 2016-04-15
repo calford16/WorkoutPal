@@ -22,4 +22,32 @@
         android:textStyle="italic"
         android:layout_marginLeft="15dp" />
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-"
+            android:id="@+id/minusButton"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:onClick="onDeleteStat"/>
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+"
+            android:id="@+id/plusButton"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:onClick="onAddStat" />
+
+    </LinearLayout>
+
 </LinearLayout>

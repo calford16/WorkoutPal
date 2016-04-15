@@ -10,7 +10,9 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import edu.westga.workoutpal.Model.MyDBHandler;
 import edu.westga.workoutpal.Model.WorkoutItem;
 import edu.westga.workoutpal.R;
 import edu.westga.workoutpal.Model.WorkoutContent;

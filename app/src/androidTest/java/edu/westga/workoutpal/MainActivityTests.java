@@ -78,7 +78,7 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
 
         getInstrumentation().waitForIdleSync();
         try {
-            controller.generateWorkoutContent(this.getActivity().getBaseContext().getAssets().open(FrontViewFragment.ARMS));
+            controller.generateWorkoutContent(this.getActivity().getBaseContext().getAssets().open(FrontViewFragment.ARMS + ".txt"));
         } catch (IOException ioe) {
             fail();
         }
