@@ -13,6 +13,7 @@ import java.io.IOException;
 import edu.westga.workoutpal.Controller.WorkoutController;
 import edu.westga.workoutpal.View.FrontViewFragment;
 import edu.westga.workoutpal.View.MainActivity;
+import edu.westga.workoutpal.View.StatsFragment;
 import edu.westga.workoutpal.View.WorkoutFragmentList;
 
 /**
@@ -78,7 +79,7 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
 
         getInstrumentation().waitForIdleSync();
         try {
-            controller.generateWorkoutContent(this.getActivity().getBaseContext().getAssets().open(FrontViewFragment.ARMS + ".txt"));
+            controller.generateWorkoutContent(this.getActivity().getBaseContext().getAssets().open(MainActivity.ARMS + ".txt"), MainActivity.ARMS);
         } catch (IOException ioe) {
             fail();
         }
@@ -112,4 +113,16 @@ public class MainActivityTests extends ActivityInstrumentationTestCase2<MainActi
         }
     }
 
+    public void testStatsAreShownWhenStatButtonClicked() {
+        MainActivity activity = getActivity();
+
+        getInstrumentation().waitForIdleSync();
+        ImageButton listButton = (ImageButton) activity.findViewById(R.id.listButton);
+        TouchUtils.clickView(this, listButton);
+        ImageButton statButton = (ImageButton) activity.findViewById(R.id.statButton);
+        TouchUtils.clickView(this, statButton);
+
+        Fragment currentFragment = getActivity().getSupportFragmentManager().findFragmentById(R.id.frag_content);
+        assertTrue(currentFragment instanceof StatsFragment);
+    }
 }

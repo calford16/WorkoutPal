@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
+ * These tests were run separately in Eclipse. In order to use them they need to be mocked or copied into Eclipse.
  */
 public class testColorTool {
 
